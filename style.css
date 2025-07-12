@@ -8,7 +8,8 @@
 /* —— body + fonts —— */
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  color: #222; /* Slightly deeper for elegance */
+  background: #fff;
   display: flex;
   justify-content: center;
 }
@@ -21,13 +22,29 @@ body {
 /* header */
 .site-header {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
+/* L'Oréal logo styling */
+.loreal-logo {
+  width: 160px;
+  height: auto;
+  margin-bottom: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .site-title {
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #231f20; /* L'Oréal black */
   margin-bottom: 10px;
+  text-transform: uppercase;
+  /* Use Halesworth eText Bold for headers if available, fallback to Montserrat/Arial */
+  font-family: "Halesworth eText", "Montserrat", Arial, Helvetica, sans-serif;
 }
 
 /* chat window */
@@ -35,29 +52,108 @@ body {
   margin: 40px 0;
 }
 
+/* Current question display area */
+.current-question {
+  background: #231f20; /* L'Oréal black */
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(35, 31, 32, 0.1);
+}
+
+.question-label {
+  font-weight: 700;
+  color: #bca16a; /* L'Oréal gold */
+  margin-right: 8px;
+}
+
+.question-text {
+  font-weight: 500;
+  /* Use Helvetica Now Display for question text if available */
+  font-family: "Helvetica Now Display", Helvetica, Arial, "Montserrat",
+    sans-serif;
+}
+
 .chat-window {
-  height: 360px;
-  border: 1px solid #000;
+  height: 500px; /* Increased from 360px to 500px for more chat space */
+  border: 1.5px solid #231f20; /* L'Oréal black */
+  border-radius: 12px;
   padding: 20px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
+  background: #ffffff; /* Clean white background for chat bubbles */
   white-space: pre-line;
+  box-shadow: 0 2px 12px rgba(35, 31, 32, 0.06);
 }
 
-/* messages */
+/* Message bubbles */
 .msg {
-  margin-bottom: 14px;
-  line-height: 1.5;
+  margin-bottom: 16px;
+  display: flex;
+  clear: both;
+  align-items: flex-end;
 }
 
+/* User messages - right aligned with L'Oréal black bubble */
 .msg.user {
-  color: #000;
+  justify-content: flex-end;
 }
 
+.msg.user .bubble {
+  background: #231f20; /* L'Oréal black */
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 18px 18px 4px 18px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(35, 31, 32, 0.15);
+  /* Use Helvetica Now Display for user messages if available */
+  font-family: "Helvetica Now Display", Helvetica, Arial, "Montserrat",
+    sans-serif;
+}
+
+/* AI messages - left aligned with L'Oréal gold accent */
 .msg.ai {
-  color: #666666;
+  justify-content: flex-start;
+}
+
+.msg.ai .bubble {
+  background: #f8f8f8; /* Light gray background */
+  color: #231f20; /* L'Oréal black text */
+  border-left: 4px solid #bca16a; /* L'Oréal gold accent */
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 4px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(188, 161, 106, 0.1);
+  /* Use Helvetica Now Display for AI messages if available */
+  font-family: "Helvetica Now Display", Helvetica, Arial, "Montserrat",
+    sans-serif;
+}
+
+/* Avatar/icon space for future enhancement */
+.msg::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 8px 4px 8px;
+  flex-shrink: 0;
+}
+
+.msg.user::before {
+  background: #231f20; /* L'Oréal black */
+  order: 2;
+}
+
+.msg.ai::before {
+  background: #bca16a; /* L'Oréal gold */
+  order: 0;
 }
 
 /* input row */
@@ -70,20 +166,26 @@ body {
 .chat-form input {
   flex: 1;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #bca16a; /* L'Oréal gold */
+  border-radius: 6px;
+  background: #fff;
   font-size: 18px;
+  /* Use Helvetica Now Display Light for input if available */
+  font-family: "Helvetica Now Display", Helvetica, Arial, "Montserrat",
+    sans-serif;
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
+  outline: 2px solid #bca16a; /* L'Oréal gold */
   outline-offset: 2px;
 }
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
+  background: #231f20; /* L'Oréal black */
   color: #fff;
   border: none;
+  border-radius: 50%;
   padding: 12px;
   width: 48px;
   height: 48px;
@@ -92,6 +194,10 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: background 0.3s;
+  box-shadow: 0 2px 8px rgba(35, 31, 32, 0.08);
+  /* Use Helvetica Now Display Regular for button text if available */
+  font-family: "Helvetica Now Display", Helvetica, Arial, "Montserrat",
+    sans-serif;
 }
 
 .chat-form button .material-icons {
@@ -99,11 +205,12 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #bca16a; /* L'Oréal gold */
+  color: #231f20;
 }
 
 .chat-form button:focus {
-  outline: 2px solid #000;
+  outline: 2px solid #bca16a;
   outline-offset: 2px;
 }
 
@@ -125,7 +232,10 @@ body {
   margin: 60px 0 40px;
   text-align: center;
   font-size: 14px;
-  color: #666;
+  color: #bca16a; /* L'Oréal gold */
+  /* Use Helvetica Now Display Regular for footer if available */
+  font-family: "Helvetica Now Display", Helvetica, Arial, "Montserrat",
+    sans-serif;
 }
 
 .site-footer nav {
@@ -134,10 +244,12 @@ body {
 
 .site-footer a {
   margin: 0 8px;
-  color: #000;
+  color: #231f20;
   text-decoration: none;
+  /* Use Halesworth eText Medium for menu links if available */
+  font-family: "Halesworth eText", "Montserrat", Arial, Helvetica, sans-serif;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #bca16a;
 }
